@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Login from "./Login";
 import Register from "./Register";
 import MainContent from "./MainContent";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 
 const App = () => {
