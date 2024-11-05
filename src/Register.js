@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { register }  from "./services/api";
 
-const Register = ({ onLogin, toggleLogin }) => {
+const Register = ({ toggleLogin }) => {
   const [form, setForm] = useState({
     username: "",
     password: "",
@@ -18,7 +18,7 @@ const Register = ({ onLogin, toggleLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      register(form).then(onLogin);
+      register(form).then(toggleLogin);
     } catch (error) {
       console.log("Reigistration failed.");
     }
