@@ -1,7 +1,8 @@
-import api from '../api'
+import api from "../api";
+import axios from "axios";
 
 
-const baseURL = 'http://localhost:8000';
+const baseURL = "http://localhost:8000";
 
 // AUTH
 export const login = async ({ username, password }) => {
@@ -9,7 +10,7 @@ export const login = async ({ username, password }) => {
     const response = await api.post(`${baseURL}/api/login/`, { username, password });
     return response.data;
   } catch (error) {
-    console.error('Error logging in:', error);
+    console.error("Error logging in:", error);
   };
 };
 
@@ -18,16 +19,17 @@ export const logout = async () => {
     const response = await api.post(`${baseURL}/api/logout/`);
     return response.data;
   } catch (error) {
-    console.error('Error logging out:', error);
+    console.error("Error logging out:", error);
   };
 };
 
 export const register = async (data) => {
   try {
-    const response = await api.post(`${baseURL}/api/register/`, data);
+    // bypass config enforcing token for first-time register - TO-DO: add bypass to api config
+    const response = await axios.post(`${baseURL}/api/register/`, data);
     return response.data;
   } catch (error) {
-    console.error('Error registering user:', error);
+    console.error("Error registering user:", error);
   };
 };
 
@@ -37,7 +39,7 @@ export const fetchNotes = async () => {
     const response = await api.get(`${baseURL}/api/v1/notes/`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching notes:', error);
+    console.error("Error fetching notes:", error);
   };
 };
 
@@ -46,7 +48,7 @@ export const fetchNote = async (id) => {
     const response = await api.get(`${baseURL}/api/v1/notes/${id}/`);
     return response.data;
   } catch (error) {
-    console.error('Error fetching note:', error);
+    console.error("Error fetching note:", error);
   };
 };
 
@@ -55,7 +57,7 @@ export const createNote = async (data) => {
     const response = await api.post(`${baseURL}/api/v1/notes/`, data);
     return response.data;
   } catch (error) {
-    console.error('Error creating note:', error);
+    console.error("Error creating note:", error);
   };
 };
 
@@ -64,7 +66,7 @@ export const editNote = async (data) => {
     const response = await api.put(`${baseURL}/api/v1/notes/${data.id}/`, data);
     return response.data;
   } catch (error) {
-    console.error('Error creating note:', error);
+    console.error("Error creating note:", error);
   };
 };
 
@@ -73,6 +75,6 @@ export const deleteNote = async (id) => {
     const response = await api.delete(`${baseURL}/api/v1/notes/${id}/`);
     return response.data;
   } catch (error) {
-    console.error('Error deleting note:', error);
+    console.error("Error deleting note:", error);
   };
 };
