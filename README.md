@@ -15,4 +15,4 @@ The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
 ### For API
-See related setup and link: 
+See related setup and link: https://github.com/scott062/note_like_us.
